@@ -1,7 +1,8 @@
-
 import streamlit as st
+import time
+import os
 
-# ----- パスワード保護 -----
+# ----- パスワード保護 / Password Protection -----
 PASSWORD = "hamster"
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
@@ -17,7 +18,7 @@ if not st.session_state.authenticated:
         st.error("🐹 うーん、ちがうみたい...！もういっかい がんばってみてね！ / Hmm... that's not it. Try again!")
     st.stop()
 
-# ----- 最初の注意画面 -----
+# ----- 最初の注意画面 / Intro Screen -----
 if "started" not in st.session_state:
     st.session_state.started = False
 
@@ -34,7 +35,7 @@ if not st.session_state.started:
         st.rerun()
     st.stop()
 
-# ----- 称号ルール -----
+# ----- 称号ルール / Title Rules -----
 def get_title(score):
     if score <= 5:
         return "🌱 みならい / Beginner", "minarai.PNG"
@@ -49,7 +50,7 @@ def get_title(score):
     else:
         return "🧪 ハムスターはかせ / Hamster Professor", "hakase.PNG"
 
-# ----- クイズデータ -----
+# ----- クイズデータ / Quiz Data (20 questions) -----
 quiz_data = [
     {"question": "ハムスターが食べられるのはどれ？ / Which of these can a hamster eat?", "options": ["チョコ / Chocolate", "グミ / Gummy", "ブロッコリー / Broccoli", "アイス / Ice Cream"], "answer": 2, "explanation": "ブロッコリーはOK。他はNGです。 / Broccoli is okay. The others are not suitable."},
     {"question": "ハムスターが食べられないのはどれ？ / Which of these can a hamster NOT eat?", "options": ["ニンジン / Carrot", "りんご / Apple", "チョコレート / Chocolate", "キャベツ / Cabbage"], "answer": 2, "explanation": "チョコレートは中毒の危険があるためNGです。 / Chocolate is toxic for hamsters."},
@@ -70,7 +71,7 @@ quiz_data = [
     {"question": "NGなスイーツは？ / Which sweet is NOT okay?", "options": ["おはぎ / Sweet Rice Cake", "いちご / Strawberry", "さつまいも / Sweet Potato", "なし / Pear"], "answer": 0, "explanation": "おはぎは糖分が多くNG。 / Sweet rice cake is too sugary."},
     {"question": "おすすめなのは？ / Which is recommended?", "options": ["ブロッコリー / Broccoli", "ハンバーガー / Hamburger", "ポテト / French Fries", "かき氷 / Shaved Ice"], "answer": 0, "explanation": "ブロッコリーは栄養豊富。 / Broccoli is nutritious."},
     {"question": "危険な飲み物は？ / Which drink is dangerous?", "options": ["水 / Water", "牛乳 / Milk", "果汁100%ジュース / 100% Juice", "砂糖水 / Sugar Water"], "answer": 1, "explanation": "牛乳はお腹を壊す。 / Milk can cause digestive issues."},
-    {"question": "ハムスターが食べてもいい食べ物は？ / Which is good for hamsters to eat?", "options": ["ブロッコリー / Broccoli", "ケーキ / Cake", "ラムネ / Ramune", "スナック菓子 / Snack"], "answer": 0, "explanation": "ブロッコリーは安全でおすすめ。 / Broccoli is safe and recommended."}
+    {"question": "ハムスターが食べてもいい食べ物は？ / Which food is safe for hamsters?", "options": ["ブロッコリー / Broccoli", "ケーキ / Cake", "ラムネ / Ramune", "スナック菓子 / Snack"], "answer": 0, "explanation": "ブロッコリーは安全でおすすめ。 / Broccoli is safe and recommended."}
 ]
 
 # ----- セッション初期化 -----
@@ -93,13 +94,13 @@ if st.session_state.current_q < len(quiz_data):
             st.warning("選択肢をえらんでからボタンを押してね！ / Please select an option before submitting.")
             st.stop()
         correct = q['answer'] == q['options'].index(choice)
-        st.session_state.answers.append((q['question'], choice, correct))
         if correct:
             st.success("⭕️ せいかい！ / Correct!")
             st.session_state.score += 1
         else:
             st.error("❌ ざんねん… / Incorrect…")
         st.info(f"せいかいは：{q['options'][q['answer']]}\n\n{q['explanation']}")
+        time.sleep(1)
         st.session_state.current_q += 1
         st.rerun()
 
@@ -109,9 +110,13 @@ else:
     st.subheader(f"あなたのスコア：{st.session_state.score} / {len(quiz_data)} / Your Score")
     title, image_file = get_title(st.session_state.score)
     st.markdown(f"## あなたの称号は：**{title}** / Your Title")
-    st.image(image_file, width=300)
+    if os.path.exists(image_file):
+        st.image(image_file, width=300)
+    else:
+        st.warning("画像ファイルが見つかりませんでした / Image file not found")
+
     if st.button("もう一回あそぶ / Play Again"):
-        for key in ["current_q", "score", "answers", "started"]:
+        for key in ["current_q", "score", "answers", "started", "authenticated"]:
             if key in st.session_state:
                 del st.session_state[key]
         st.rerun()
