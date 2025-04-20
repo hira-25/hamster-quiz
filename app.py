@@ -49,7 +49,7 @@ def get_title(score):
     else:
         return "🧪 ハムスターはかせ / Hamster Professor", "hakase.PNG"
 
-# ----- クイズデータ（1問だけ例） / Quiz Data (Only 1 shown for brevity) -----
+# ----- クイズデータ（簡略） / Quiz Data (Simplified) -----
 quiz_data = [
     {
         "question": "ハムスターが食べられるのはどれ？ / Which of these can a hamster eat?",
