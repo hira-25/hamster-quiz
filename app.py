@@ -12,7 +12,7 @@ if not st.session_state.authenticated:
     pw = st.text_input("合言葉を入力してね", type="password")
     if pw == PASSWORD:
         st.session_state.authenticated = True
-        st.experimental_rerun()
+        st.rerun()
     elif pw != "":
         st.error("🐹 うーん、ちがうみたい...！もういっかい がんばってみてね！")
     st.stop()
@@ -26,7 +26,7 @@ if not st.session_state.started:
     st.markdown("### クイズをはじめる前に読んでね！\n- むずかしい問題もあるけど、がんばってね！\n- 1問ずつ、えらんで「こたえを決定！」してね\n- 最後にスコアと称号が出るよ✨")
     if st.button("🎮 クイズをはじめる！"):
         st.session_state.started = True
-        st.experimental_rerun()
+        st.rerun()
     st.stop()
 
 # ----- 称号ルール -----
@@ -44,7 +44,7 @@ def get_title(score):
     else:
         return "🧪 ハムスターはかせ", "hakase.PNG"
 
-# ----- クイズデータ（ダミー） -----
+# ----- クイズデータ（ダミー1問だけ） -----
 quiz_data = [{"question": "ハムスターが食べられるのはどれ？", "options": ["チョコ", "グミ", "ブロッコリー", "アイス"], "answer": 2, "explanation": "ブロッコリーはOK。他はNGです。"}]
 
 # ----- セッション管理 -----
@@ -75,7 +75,7 @@ if st.session_state.current_q < len(quiz_data):
             st.error("❌ ざんねん…")
         st.info(f"せいかいは：{q['options'][q['answer']]}\n\n{q['explanation']}")
         st.session_state.current_q += 1
-        st.experimental_rerun()
+        st.rerun()
 
 # 結果表示
 else:
@@ -93,4 +93,4 @@ else:
         st.session_state.score = 0
         st.session_state.answers = []
         st.session_state.started = False
-        st.experimental_rerun()
+        st.rerun()
