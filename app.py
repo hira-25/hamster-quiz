@@ -49,8 +49,15 @@ def get_title(score):
     else:
         return "🧪 ハムスターはかせ / Hamster Professor", "hakase.PNG"
 
-# ----- クイズデータ（20問・日本語＋英語） / Quiz Data (20 Questions JP+EN) -----
-quiz_data = [...  # 内容は長いため省略（前回と同一）
+# ----- クイズデータ（1問だけ例） / Quiz Data (Only 1 shown for brevity) -----
+quiz_data = [
+    {
+        "question": "ハムスターが食べられるのはどれ？ / Which of these can a hamster eat?",
+        "options": ["チョコ / Chocolate", "グミ / Gummy", "ブロッコリー / Broccoli", "アイス / Ice Cream"],
+        "answer": 2,
+        "explanation": "ブロッコリーはOK。他はNGです。 / Broccoli is okay. The others are not suitable."
+    }
+]
 
 # ----- セッション初期化 / Session Initialization -----
 if "current_q" not in st.session_state:
@@ -58,17 +65,17 @@ if "current_q" not in st.session_state:
     st.session_state.score = 0
     st.session_state.answers = []
 
+# ----- クイズ進行 / Quiz Flow -----
 st.title("🐹 ハムスター4択クイズ / 4-Choice Hamster Quiz")
 st.markdown("**たべていいのはどれかな？ / Which one is safe to eat?**")
 
-# ----- クイズ進行 / Quiz Flow -----
 if st.session_state.current_q < len(quiz_data):
     q = quiz_data[st.session_state.current_q]
     st.subheader(f"Q{st.session_state.current_q + 1}. {q['question']}")
     choice = st.radio("えらんでね： / Choose one:", q['options'], key=f"q{st.session_state.current_q}")
 
     if st.button("こたえを決定！ / Submit Answer!"):
-        if not choice:
+        if choice == "":
             st.warning("選択肢をえらんでからボタンを押してね！ / Please select an option before submitting.")
             st.stop()
         correct = q['answer'] == q['options'].index(choice)
@@ -83,8 +90,6 @@ if st.session_state.current_q < len(quiz_data):
 {q['explanation']}")
         st.session_state.current_q += 1
         st.rerun()
-
-# ----- 結果表示 / Results -----
 else:
     st.header("🎉 おつかれさま！ / Well done!")
     st.subheader(f"あなたのスコア：{st.session_state.score} / {len(quiz_data)} / Your Score")
