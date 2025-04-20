@@ -300,16 +300,27 @@ if st.session_state.current_q < len(quiz_data):
         if correct:
             st.success("⭕️ せいかい！ / Correct!")
             st.session_state.score += 1
+            st.audio("audio/correct.mp3", format="audio/mp3", start_time=0)
         else:
             st.error("❌ ざんねん… / Incorrect…")
+            st.audio("audio/wrong.mp3", format="audio/mp3", start_time=0)
         correct_answer = q['options'][q['answer']]
         explanation = q['explanation']
         st.info("せいかいは：" + correct_answer + "\n\n" + explanation)
         st.session_state.current_q += 1
         st.rerun()
 
+    # --- 常時スコア・称号表示 / Realtime Title Display ---
+    st.markdown("---")
+    st.markdown(f"### 現在のスコア：{st.session_state.score} / {len(quiz_data)}")
+    title, image_file = get_title(st.session_state.score)
+    st.markdown(f"### 現在の称号：{title}")
+    if os.path.exists(image_file):
+        st.image(image_file, width=200)
+
 # ----- Result Display -----
 else:
+    st.audio("audio/finish.mp3", format="audio/mp3", start_time=0)
     st.header("🎉 おつかれさま！ / Well done!")
     st.subheader(f"あなたのスコア：{st.session_state.score} / {len(quiz_data)} / Your Score")
     title, image_file = get_title(st.session_state.score)
