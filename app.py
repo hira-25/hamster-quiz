@@ -100,7 +100,7 @@ if st.session_state.current_q < len(quiz_data):
         else:
             st.error("❌ ざんねん… / Incorrect…")
         st.info(f"せいかいは：{q['options'][q['answer']]}\n\n{q['explanation']}")
-        time.sleep(1)
+        time.sleep(2)
         st.session_state.current_q += 1
         st.rerun()
 
