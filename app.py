@@ -12,7 +12,7 @@ if not st.session_state.authenticated:
     pw = st.text_input("合言葉を入力してね / Enter Password", type="password")
     if pw == PASSWORD:
         st.session_state.authenticated = True
-        st.experimental_rerun()
+        st.rerun()
     elif pw:
         st.error("🐹 うーん、ちがうみたい...！もういっかい がんばってみてね！ / Hmm... that's not it. Try again!")
     st.stop()
@@ -31,7 +31,7 @@ if not st.session_state.started:
 """)
     if st.button("🎮 クイズをはじめる！ / Start the Quiz!"):
         st.session_state.started = True
-        st.experimental_rerun()
+        st.rerun()
     st.stop()
 
 # ----- 称号ルール -----
@@ -101,7 +101,7 @@ if st.session_state.current_q < len(quiz_data):
             st.error("❌ ざんねん… / Incorrect…")
         st.info(f"せいかいは：{q['options'][q['answer']]}\n\n{q['explanation']}")
         st.session_state.current_q += 1
-        st.experimental_rerun()
+        st.rerun()
 
 # ----- 結果表示 -----
 else:
@@ -114,4 +114,4 @@ else:
         for key in ["current_q", "score", "answers", "started"]:
             if key in st.session_state:
                 del st.session_state[key]
-        st.experimental_rerun()
+        st.rerun()
