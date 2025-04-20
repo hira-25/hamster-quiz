@@ -7,7 +7,7 @@ if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
 if not st.session_state.authenticated:
-    st.title("🔐 はむはむクイズルームへようこそ")
+    st.title("🔐 ハムスター20問クイズ！")
     st.markdown("このクイズに入るには、**合言葉** が必要だよ！")
     pw = st.text_input("合言葉を入力してね", type="password")
     if pw == PASSWORD:
