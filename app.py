@@ -22,7 +22,7 @@ if "started" not in st.session_state:
     st.session_state.started = False
 
 if not st.session_state.started:
-    st.image("hajimeni.PNG", use_column_width=True)
+    st.image("hajimeni.PNG", use_container_width=True)
     st.markdown("### クイズをはじめる前に読んでね！\n- むずかしい問題もあるけど、がんばってね！\n- 1問ずつ、えらんで「こたえを決定！」してね\n- 最後にスコアと称号が出るよ✨")
     if st.button("🎮 クイズをはじめる！"):
         st.session_state.started = True
