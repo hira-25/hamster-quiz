@@ -306,7 +306,7 @@ if st.session_state.current_q < len(quiz_data):
         explanation = q['explanation']
         st.info("せいかいは：" + correct_answer + "\n\n" + explanation)
         st.session_state.current_q += 1
-        st.experimental_rerun()
+        st.rerun()
 
 # ----- Result Display -----
 else:
@@ -323,5 +323,5 @@ else:
         st.session_state.score = 0
         st.session_state.answers = []
         st.session_state.started = False
-        st.experimental_rerun()
+        st.rerun()
 
