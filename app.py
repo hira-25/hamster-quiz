@@ -115,7 +115,7 @@ quiz_data = [
             "おもち / Rice Cake",
             "わかめ / Seaweed",
             "しらす / Whitebait",
-            "チョコワ / Chocowheat"
+            "チョコ味のアイスクリーム / Chocolate Ice Cream"
         ],
         "answer": 2,
         "explanation": "しらすはOK。他はNG。 / Whitebait is okay. The others are not."
@@ -264,7 +264,7 @@ quiz_data = [
         "explanation": "牛乳はお腹を壊す。 / Milk can cause digestive issues."
     },
     {
-        "question": "いい食べ物は？ / Which is a good food?",
+        "question": "ハムスターが食べてもいい食べ物は？ / Which food is safe for hamsters?",
         "options": [
             "ブロッコリー / Broccoli",
             "ケーキ / Cake",
@@ -275,7 +275,6 @@ quiz_data = [
         "explanation": "ブロッコリーは安全でおすすめ。 / Broccoli is safe and recommended."
     }
 ]
-
 
 # ----- Session State Initialization -----
 if "current_q" not in st.session_state:
@@ -307,9 +306,11 @@ if st.session_state.current_q < len(quiz_data):
         explanation = q['explanation']
         st.info("せいかいは：" + correct_answer + "\n\n" + explanation)
         st.session_state.current_q += 1
-        st.rerun()
+        st.experimental_rerun()
 
 # ----- Result Display -----
+else:
+    st.header("🎉 おつかれさま！ / Well done!")
     st.subheader(f"あなたのスコア：{st.session_state.score} / {len(quiz_data)} / Your Score")
     title, image_file = get_title(st.session_state.score)
     st.markdown(f"## あなたの称号は：**{title}** / Your Title")
@@ -317,11 +318,10 @@ if st.session_state.current_q < len(quiz_data):
         st.image(image_file, width=300)
     else:
         st.warning("画像ファイルが見つかりませんでした / Image file not found")
-
     if st.button("もう一回あそぶ / Play Again"):
         st.session_state.current_q = 0
         st.session_state.score = 0
         st.session_state.answers = []
         st.session_state.started = False
-        st.rerun()
+        st.experimental_rerun()
 
