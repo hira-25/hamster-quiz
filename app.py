@@ -58,7 +58,7 @@ quiz_data = [
     {"question": "水分が多くてあげすぎ注意なのは？ / Which has high water content and should be limited?", "options": ["きゅうり / Cucumber", "キャベツ / Cabbage", "にんじん / Carrot", "トマト / Tomato"], "answer": 0, "explanation": "きゅうりは水分が多いので注意。 / Cucumber has high water content."},
     {"question": "たべてはいけないものは？ / What should not be given?", "options": ["ゆで卵の白身 / Boiled Egg White", "パンの耳 / Bread Crust", "たまねぎ / Onion", "オートミール / Oatmeal"], "answer": 2, "explanation": "たまねぎは有毒。 / Onion is toxic."},
     {"question": "たべても大丈夫なのはどれ？ / Which of these is safe?", "options": ["おもち / Rice Cake", "わかめ / Seaweed", "しらす / Whitebait", "チョコ味のアイス / Chocolate Ice Cream"], "answer": 2, "explanation": "しらすはOK。他はNG。 / Whitebait is okay. The others are not."},
-    {"question": "あげてもいい果物はどれ？ / Which fruit can be given?", "options": ["みかん / Mandarin Orange", "もも / Peach", "ぶどう / Grape", "ドライマンゴー / Dried Mango"], "answer": 1, "explanation": "ももは少量ならOK。 / Peach is okay in small amounts."},
+    {"question": "あげてもいい果物はどれ？ / Which fruit can be given?", "options": ["チョコバナナ / Chocolate Banana", "もも / Peach", "ぶどう / Grape", "ドライマンゴー / Dried Mango"], "answer": 1, "explanation": "ももは果肉のみ、皮と種をのぞいて少しだけならOK。他の果物はハムスターに向きません。 / Peach (flesh only, no skin or seed) is okay in small amounts. The others are not suitable for hamsters."},
     {"question": "たべてもいい“たね”は？ / Which seed is okay to eat?", "options": ["ひまわりのたね / Sunflower Seed", "アボカドのたね / Avocado Seed", "りんごのたね / Apple Seed", "さくらんぼのたね / Cherry Pit"], "answer": 0, "explanation": "ひまわりのたねは少量OK。 / Sunflower seeds are okay in moderation."},
     {"question": "穀物でOKなのは？ / Which grain is okay?", "options": ["シリアル（無糖） / Unsweetened Cereal", "小麦粉 / Flour", "ドーナツ / Donut", "あまいおかし / Sweets"], "answer": 0, "explanation": "無糖シリアルはOK。 / Unsweetened cereal is okay."},
     {"question": "毒になるのは？ / Which is toxic?", "options": ["にんじん / Carrot", "チョコレート / Chocolate", "かぼちゃ / Pumpkin", "ブロッコリー / Broccoli"], "answer": 1, "explanation": "チョコレートは毒性あり。 / Chocolate is toxic."},
@@ -70,7 +70,7 @@ quiz_data = [
     {"question": "のりは？ / What about seaweed?", "options": ["味付けのりOK / Seasoned Nori OK", "焼きのりならOK / Roasted Nori OK", "どちらもだめ / Neither", "何枚でもOK / Unlimited"], "answer": 1, "explanation": "焼きのりは少量OK。 / Roasted nori is okay in small amounts."},
     {"question": "NGなスイーツは？ / Which sweet is NOT okay?", "options": ["おはぎ / Sweet Rice Cake", "いちご / Strawberry", "さつまいも / Sweet Potato", "なし / Pear"], "answer": 0, "explanation": "おはぎは糖分が多くNG。 / Sweet rice cake is too sugary."},
     {"question": "おすすめなのは？ / Which is recommended?", "options": ["ブロッコリー / Broccoli", "ハンバーガー / Hamburger", "ポテト / French Fries", "かき氷 / Shaved Ice"], "answer": 0, "explanation": "ブロッコリーは栄養豊富。 / Broccoli is nutritious."},
-    {"question": "危険な飲み物は？ / Which drink is dangerous?", "options": ["水 / Water", "牛乳 / Milk", "果汁100%ジュース / 100% Juice", "砂糖水 / Sugar Water"], "answer": 1, "explanation": "牛乳はお腹を壊す。 / Milk can cause digestive issues."},
+    {"question": "最も危険な飲み物は？ / Which drink is most dangerous?", "options": ["水 / Water", "牛乳（乳糖を含む） / Milk (contains lactose)", "果汁ジュース / Fruit Juice", "砂糖水 / Sugar Water"], "answer": 3, "explanation": "砂糖水は糖分しかなく、ハムスターの体にとても悪いです。 / Sugar water contains only sugar and is very harmful to hamsters."},
     {"question": "ハムスターが食べてもいい食べ物は？ / Which food is safe for hamsters?", "options": ["ブロッコリー / Broccoli", "ケーキ / Cake", "ラムネ / Ramune", "スナック菓子 / Snack"], "answer": 0, "explanation": "ブロッコリーは安全でおすすめ。 / Broccoli is safe and recommended."}
 ]
 
